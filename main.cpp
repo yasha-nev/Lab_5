@@ -57,14 +57,11 @@ int main(int argc, char *argv[])
 
     hash.SetHashParametrs(7, 2);
 
-    char *str = "66144248871";
-    hash.Delete(str);
+    hash.Delete("66144248871");
     hash.Print();
 
-    hash.Resize(4);
-    hash.Print();
-
-    hash.Resize(20);
+    hash.Insert("66144248871");
+    hash.Insert("66144248878");
     hash.Print();
 
     return 0;

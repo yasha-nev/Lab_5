@@ -1,5 +1,4 @@
 #include "hash_tabl.h"
-//#include <cstring>
 
 HashTabl::HashTabl(int _m, int _c, int _d)
 {
@@ -70,6 +69,9 @@ void HashTabl::ReHash(int _m){
 }
 
 void HashTabl::Insert(char *key){
+    if (size == m){
+        Resize(m * 2);
+    }
     int a = Hash(key);
     int h = a;
     int i = 0;

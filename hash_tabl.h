@@ -1,5 +1,6 @@
 #ifndef HASH_TABL_H
 #define HASH_TABL_H
+
 #include <iostream>
 #include "strfunction.h"
 
