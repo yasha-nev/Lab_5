@@ -19,7 +19,7 @@ HashTabl::~HashTabl(){
     delete [] tabl;
 }
 void HashTabl::Resize(int _m){
-    if (_m < -1 || _m < size){
+    if (_m < size){
         std::cout << "\nResize to "<< _m <<" error\n";
         return;
     }
@@ -77,7 +77,7 @@ void HashTabl::Insert(char *key){
     int first_i;
     int i;
 
-    float k = (-c/ 2 / d);
+    float k = (-c / 2 / d);
     if (k < 0){
     	i = 0;
     }
@@ -88,7 +88,7 @@ void HashTabl::Insert(char *key){
 
     while (tabl[h]){
         h = (a + c * i + d * i * i) % m;
-        if (i > (m - i) * (m - i)){
+        if (i > (m - first_i) * (m - first_i)){
         	break;
         }
         i++;
@@ -137,14 +137,22 @@ int HashTabl::Search(char *key){
     int a = Hash(key);
     int h = a;
     int i = 0;
+    int first_i;
+    
+    float k = (-c / 2 / d);
+    if (k < 0){
+    	i = 0;
+    }
+    else{
+    	i = k;
+    }
+    first_i = i;
+    
     while (strcmp(tabl[h], key)){
-        h = a + c * i + d * i * i;
-        if (h >= m){
-            h = h % m;
-        }
+        h = (a + c * i + d * i * i) % m;
         i++;
-        if (i > 2 * m){
-            break;
+        if (i > (m - first_i) * (m - first_i)){
+        	break;
         }
 
     }
