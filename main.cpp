@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
         return 0;
     }
 
-    HashTabl hash(n, 2, 5);
+    HashTabl hash(n, 5, 2);
 
     for (int i = 0; i < n; i++){
 
@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
 
     hash.Print();
 
-    hash.SetHashParametrs(7, 2);
+    hash.SetHashParametrs(7, 4);
 
     hash.Delete("66144248871");
     hash.Print();

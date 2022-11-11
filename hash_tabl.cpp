@@ -31,7 +31,7 @@ void HashTabl::SetHashParametrs(int _d, int _c)
 {
     d = _d;
     c = _c;
-    std::cout << "New hash parametrs" <<
+    std::cout << "New hash parametrs " <<
                  "d = " << d << " " <<
                  "c = " << c << "\n";
     ReHash(m);
@@ -74,17 +74,22 @@ void HashTabl::Insert(char *key){
     }
     int a = Hash(key);
     int h = a;
-    int i = 0;
+    int first_i;
+    int i;
 
-    float k = (a - (-c/ 2 / d)) * 2;
+    float k = (-c/ 2 / d);
+    if (k < 0){
+    	i = 0;
+    }
+    else{
+    	i = k;
+    }
+    first_i = i;
 
     while (tabl[h]){
-        h = a + c * i + d * i * i;
-        if (h >= m){
-            h = h % m;
-        }
-        if (i > k){
-            break;
+        h = (a + c * i + d * i * i) % m;
+        if (i > (m - i) * (m - i)){
+        	break;
         }
         i++;
 
